@@ -67,26 +67,25 @@ public class Day2 extends Day {
         // X -> PAPER   -> 2 Point
         // Y -> ROCK    -> 1 Points
         // Z -> SCISSOR -> 3 Point
-
         switch (combination) {
             case "A Y":
-                return 4;
+                return rockPoint+drawPoint;
             case "B Y":
-                return 5;
+                return paperPoint+drawPoint;
             case "C Y":
-                return 6;
+                return scissorPoint+drawPoint;
             case "A X":
-                return 3;
+                return scissorPoint+losePoint;
             case "B X":
-                return 1;
+                return rockPoint+losePoint;
             case "C X":
-                return 2;
+                return paperPoint+losePoint;
             case "A Z":
-                return 8;
+                return paperPoint+winPoint;
             case "B Z":
-                return 9;
+                return scissorPoint+winPoint;
             case "C Z":
-                return 7;
+                return rockPoint+winPoint;
         }
         return 0;
     }
