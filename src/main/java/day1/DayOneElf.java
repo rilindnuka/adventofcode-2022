@@ -2,12 +2,12 @@ package day1;
 
 import java.util.List;
 
-public class Elf {
+public class DayOneElf {
     private List<Integer> calories;
     private Integer sum;
 
 
-    public Elf(List<Integer> calories, Integer sum) {
+    public DayOneElf(List<Integer> calories, Integer sum) {
         this.calories = calories;
         this.sum = sum;
     }

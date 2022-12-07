@@ -1,31 +1,28 @@
 package day1;
 
+import day.Day;
+import util.AdventUtil;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Day1 {
-    private String input;
-    private List<Elf> elves;
+public class Day1 extends Day {
+    private List<DayOneElf> elves;
     private List<Integer> calories;
 
     public Day1() throws IOException {
-        String fileName = "src/main/resources/day1.txt";
-        Path path = Paths.get(fileName);
-        input = Files.readString(path);
+        super.setInput(AdventUtil.readFile("src/main/resources/day1.txt"));
         elves = new ArrayList<>();
         calories = new ArrayList<>();
     }
 
-    public long calculate(int part) {
-        String[] fields = input.split("\n");
+    public void calculate(int part) {
+        String[] fields = super.getInput().split("\n");
         for (int i = 0; i < fields.length; i++) {
             boolean skip = fields[i].isEmpty();
             if (skip) {
-                elves.add(new Elf(
+                elves.add(new DayOneElf(
                         calories,
                         calories.stream().reduce(0, Integer::sum)));
                 calories.clear();
@@ -35,34 +32,31 @@ public class Day1 {
         }
         switch (part) {
             case 1:
-                return partOne();
+                System.out.printf("Day one (part one): %d\n",partOne());
+                ; break;
             case 2:
-                return partTwo();
+                System.out.printf("Day one (part two): %d\n",partTwo());;break;
             default:
-                return 0;
+                System.out.println("Wrong part");;
         }
     }
 
-    public Integer partOne() {
-        return elves.stream().max((Comparator.comparingInt(Elf::getSum))).isPresent()
-                ? elves.stream().max((Comparator.comparingInt(Elf::getSum))).get().getSum()
+    private Integer partOne() {
+        return elves.stream().max((Comparator.comparingInt(DayOneElf::getSum))).isPresent()
+                ? elves.stream().max((Comparator.comparingInt(DayOneElf::getSum))).get().getSum()
                 : 0;
     }
 
-    public Integer partTwo() {
+    private Integer partTwo() {
         List<Integer> sums = elves.stream()
-                .sorted(Comparator.comparing(Elf::getSum))
-                .map(Elf::getSum)
+                .sorted(Comparator.comparing(DayOneElf::getSum))
+                .map(DayOneElf::getSum)
                 .collect(Collectors.toList());
         Collections.sort(sums, Collections.reverseOrder());
         return sums.get(0)+sums.get(1)+sums.get(2);
     }
 
     public String getInput() {
-        return input;
-    }
-
-    public void setInput(String input) {
-        this.input = input;
+        return super.getInput();
     }
 }
