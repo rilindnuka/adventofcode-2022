@@ -19,11 +19,11 @@ public class Day2 extends Day {
     public Day2() throws IOException {
         super.setInput(AdventUtil.readFile("src/main/resources/day2.txt"));
         this.combinations = new ArrayList<>();
+        fillCombinations();
     }
 
     @Override
     public void calculate(int part) {
-        fillCombinations();
         switch (part) {
             case 1:
                 System.out.printf("Day two (part one): %d\n", partOne());
@@ -57,7 +57,7 @@ public class Day2 extends Day {
             sum += calculateCombinationPartTwo(combinations.get(i));
 
         }
-        return sum/2;
+        return sum;
     }
 
     private int calculateCombinationPartTwo(String combination) {
