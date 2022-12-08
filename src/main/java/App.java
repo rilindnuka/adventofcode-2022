@@ -3,6 +3,7 @@ import day1.Day1;
 import day2.Day2;
 import day3.Day3;
 import day4.Day4;
+import day5.Day5;
 
 import java.io.IOException;
 
@@ -33,6 +34,13 @@ public class App {
             Day4 day4 = new Day4();
             day4.calculate(1);
             day4.calculate(2);
+            System.out.println(hashtags);
+            System.out.println();
+
+            Day5 day5partOne = new Day5();
+            day5partOne.calculate(1);
+            Day5 day5day5partTwo = new Day5();
+            day5day5partTwo.calculate(2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
