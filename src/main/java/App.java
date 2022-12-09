@@ -5,6 +5,7 @@ import day3.Day3;
 import day4.Day4;
 import day5.Day5;
 import day6.Day6;
+import day7.Day7;
 
 import java.io.IOException;
 
@@ -48,6 +49,12 @@ public class App {
             Day6 day6 = new Day6();
             day6.calculate(1);
             day6.calculate(2);
+            System.out.println(hashtags);
+            System.out.println();
+
+            Day7 day7 =new Day7();
+            day7.calculate(1);
+            day7.calculate(2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
